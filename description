@@ -1,0 +1,30 @@
+Name: pautomata
+Title:Parameterized automata
+Author:Emmanuel Freund & Christine Paulin 
+Institution: LRI, Université Paris Sud
+
+Description: This contribution is a modelisation in Coq of the p-automata 
+designed in the CALIFE project (http://www.loria.fr/calife). 
+It contains an axiomatisation of time, 
+the definition of a p-automaton, the definition of binary and 
+arbitrary synchronisation of a family of p-automaton, the semantics of 
+a p-automaton as a labelled transition system. The description of the ABR 
+algorithm as a p-automaton is also given.
+
+This work is reported in : P. Castéran, E. Freund, C. Paulin and
+D. Rouillard ``Bibliothèques Coq et Isabelle-HOL pour les systèmes de
+transitions et les p-automates''
+http://www.loria.fr/projets/calife/WebCalifePublic/FOURNITURES/F5.4.ps.gz
+Fourniture CALIFE 2000
+
+
+The files Evenements.v and ABRgen.v contain a proof of a general 
+ABR algorithm with an unlimited schedule proposed by C. Rabadan & F. Klay. 
+This modelisation does not use p-automaton
+
+The directory PGM contains a modelisation of the Pragmatic General
+Multicast (PGM) multicast internet protocol as a p-automata done by Yijia Chen.
+in august 2001 at LRI, Université Paris Sud with Coq Version: 7.1
+
+Keywords: p-automata, ABR, PGM, time
+Version: 7.0
