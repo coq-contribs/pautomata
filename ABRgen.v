@@ -302,7 +302,7 @@ Fixpoint ACR (acrt : RM) (t : Time) (l : schedule) {struct l} : RM :=
   match l with
   | vide => acrt
   | add_sch t' r l' =>
-      if Tle_lt_dec t' t then fun _ => r else fun _ => ACR acrt t l'
+      if Tle_lt_dec t' t then r else ACR acrt t l'
   end.
 
 (*s Properties of [ACR].\\
