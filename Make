@@ -1,9 +1,10 @@
+#Definition of transitions systems
+Transitions.v
 #Axiomatisation of time 
 Time.v
 TimeSyntax.v
 Timebase.v
 #Definition of p-automata
-Transitions.v
 PAutomata.v
 PAuto.v
 Properties.v
@@ -24,6 +25,8 @@ ABRgen.v
 # Proof of the PGM protocol
 PGM
 #Modular version
+# Definition of generalised hybrid systems
+GAutomata.v
 AutoLMod.v
 PAutomataMod.v
 TransMod.v

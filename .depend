@@ -1,90 +1,93 @@
 autoLMod.cmo: autoLMod.ml autoLMod.cmi pAutomataMod.cmi specif.cmi time.cmi
 autoLMod.cmx: autoLMod.ml autoLMod.cmi pAutomataMod.cmx specif.cmx time.cmx
+binInt.cmo: binInt.ml binInt.cmi binNat.cmi binPos.cmi datatypes.cmi
+binInt.cmx: binInt.ml binInt.cmi binNat.cmx binPos.cmx datatypes.cmx
+binNat.cmo: binNat.ml binNat.cmi binPos.cmi datatypes.cmi
+binNat.cmx: binNat.ml binNat.cmi binPos.cmx datatypes.cmx
+binPos.cmo: binPos.ml binPos.cmi datatypes.cmi peano.cmi
+binPos.cmx: binPos.ml binPos.cmi datatypes.cmx peano.cmx
 datatypes.cmo: datatypes.ml datatypes.cmi
 datatypes.cmx: datatypes.ml datatypes.cmi
-fast_integer.cmo: fast_integer.ml fast_integer.cmi datatypes.cmi peano.cmi
-fast_integer.cmx: fast_integer.ml fast_integer.cmi datatypes.cmx peano.cmx
 logic.cmo: logic.ml logic.cmi
 logic.cmx: logic.ml logic.cmi
-logic_Type.cmo: logic_Type.ml logic_Type.cmi
-logic_Type.cmx: logic_Type.ml logic_Type.cmi
+logic_Type.cmo: logic_Type.ml logic_Type.cmi datatypes.cmi
+logic_Type.cmx: logic_Type.ml logic_Type.cmi datatypes.cmx
 pAutomataMod.cmo: pAutomataMod.ml pAutomataMod.cmi datatypes.cmi logic_Type.cmi time.cmi
 pAutomataMod.cmx: pAutomataMod.ml pAutomataMod.cmi datatypes.cmx logic_Type.cmx time.cmx
 peano.cmo: peano.ml peano.cmi datatypes.cmi
 peano.cmx: peano.ml peano.cmi datatypes.cmx
 specif.cmo: specif.ml specif.cmi datatypes.cmi
 specif.cmx: specif.ml specif.cmi datatypes.cmx
-time.cmo: time.ml time.cmi datatypes.cmi specif.cmi fast_integer.cmi
-time.cmx: time.ml time.cmi datatypes.cmx specif.cmx fast_integer.cmx
+time.cmo: time.ml time.cmi binInt.cmi binPos.cmi datatypes.cmi specif.cmi
+time.cmx: time.ml time.cmi binInt.cmx binPos.cmx datatypes.cmx specif.cmx
 autoLMod.cmi: autoLMod.mli pAutomataMod.cmi specif.cmi time.cmi
+binInt.cmi: binInt.mli binNat.cmi binPos.cmi datatypes.cmi
+binNat.cmi: binNat.mli binPos.cmi datatypes.cmi
+binPos.cmi: binPos.mli datatypes.cmi peano.cmi
 datatypes.cmi: datatypes.mli
-fast_integer.cmi: fast_integer.mli datatypes.cmi peano.cmi
 logic.cmi: logic.mli
-logic_Type.cmi: logic_Type.mli
+logic_Type.cmi: logic_Type.mli datatypes.cmi
 pAutomataMod.cmi: pAutomataMod.mli datatypes.cmi logic_Type.cmi time.cmi
 peano.cmi: peano.mli datatypes.cmi
 specif.cmi: specif.mli datatypes.cmi
-time.cmi: time.mli datatypes.cmi specif.cmi fast_integer.cmi
-ABRdef.vo: ABRdef.v ./PAuto.vo
-ABRdef.vi: ABRdef.v ./PAuto.vo
-ABRgen.vo: ABRgen.v ./Time.vo ./TimeSyntax.vo ./Timebase.vo ./Evenements.vo
-ABRgen.vi: ABRgen.v ./Time.vo ./TimeSyntax.vo ./Timebase.vo ./Evenements.vo
-AutoL.vo: AutoL.v ./PAutomata.vo
-AutoL.vi: AutoL.v ./PAutomata.vo
-AutoLMod.vo: AutoLMod.v ./PAutomataMod.vo
-AutoLMod.vi: AutoLMod.v ./PAutomataMod.vo
-Coercions.vo: Coercions.v ./Time.vo
-Coercions.vi: Coercions.v ./Time.vo
-Evenements.vo: Evenements.v ./Time.vo ./Timebase.vo
-Evenements.vi: Evenements.v ./Time.vo ./Timebase.vo
-Extract.vo: Extract.v ./PAutoMod.vo
-Extract.vi: Extract.v ./PAutoMod.vo
+time.cmi: time.mli binInt.cmi binPos.cmi datatypes.cmi specif.cmi
+ABRdef.vo: ABRdef.v PAuto.vo
+ABRdef.vi: ABRdef.v PAuto.vo
+ABRgen.vo: ABRgen.v Time.vo TimeSyntax.vo Timebase.vo Evenements.vo
+ABRgen.vi: ABRgen.v Time.vo TimeSyntax.vo Timebase.vo Evenements.vo
+AutoL.vo: AutoL.v PAutomata.vo
+AutoL.vi: AutoL.v PAutomata.vo
+AutoLMod.vo: AutoLMod.v PAutomataMod.vo
+AutoLMod.vi: AutoLMod.v PAutomataMod.vo
+Coercions.vo: Coercions.v Time.vo
+Coercions.vi: Coercions.v Time.vo
+Evenements.vo: Evenements.v Time.vo Timebase.vo
+Evenements.vi: Evenements.v Time.vo Timebase.vo
+Extract.vo: Extract.v PAutoMod.vo
+Extract.vi: Extract.v PAutoMod.vo
+GAutomata.vo: GAutomata.v TransMod.vo
+GAutomata.vi: GAutomata.v TransMod.vo
 LList.vo: LList.v
 LList.vi: LList.v
-PAuto.vo: PAuto.v ./Time.vo ./TimeSyntax.vo ./Transitions.vo ./PAutomata.vo ./Coercions.vo ./AutoL.vo
-PAuto.vi: PAuto.v ./Time.vo ./TimeSyntax.vo ./Transitions.vo ./PAutomata.vo ./Coercions.vo ./AutoL.vo
-PAutoMod.vo: PAutoMod.v ./Time.vo ./TimeSyntax.vo ./TransMod.vo ./PAutomataMod.vo ./Coercions.vo ./AutoLMod.vo
-PAutoMod.vi: PAutoMod.v ./Time.vo ./TimeSyntax.vo ./TransMod.vo ./PAutomataMod.vo ./Coercions.vo ./AutoLMod.vo
-PAutomata.vo: PAutomata.v ./Time.vo ./TimeSyntax.vo ./Transitions.vo
-PAutomata.vi: PAutomata.v ./Time.vo ./TimeSyntax.vo ./Transitions.vo
-PAutomataMod.vo: PAutomataMod.v ./Time.vo ./TimeSyntax.vo ./TransMod.vo
-PAutomataMod.vi: PAutomataMod.v ./Time.vo ./TimeSyntax.vo ./TransMod.vo
-Properties.vo: Properties.v ./Time.vo ./Transitions.vo ./PAutomata.vo
-Properties.vi: Properties.v ./Time.vo ./Transitions.vo ./PAutomata.vo
+PAuto.vo: PAuto.v Time.vo TimeSyntax.vo Transitions.vo PAutomata.vo Coercions.vo AutoL.vo
+PAuto.vi: PAuto.v Time.vo TimeSyntax.vo Transitions.vo PAutomata.vo Coercions.vo AutoL.vo
+PAutoMod.vo: PAutoMod.v Time.vo TimeSyntax.vo TransMod.vo PAutomataMod.vo Coercions.vo AutoLMod.vo
+PAutoMod.vi: PAutoMod.v Time.vo TimeSyntax.vo TransMod.vo PAutomataMod.vo Coercions.vo AutoLMod.vo
+PAutomata.vo: PAutomata.v Time.vo TimeSyntax.vo Transitions.vo
+PAutomata.vi: PAutomata.v Time.vo TimeSyntax.vo Transitions.vo
+PAutomataMod.vo: PAutomataMod.v Time.vo TimeSyntax.vo TransMod.vo
+PAutomataMod.vi: PAutomataMod.v Time.vo TimeSyntax.vo TransMod.vo
+Properties.vo: Properties.v Time.vo Transitions.vo PAutomata.vo
+Properties.vi: Properties.v Time.vo Transitions.vo PAutomata.vo
 Time.vo: Time.v
 Time.vi: Time.v
-TimeSyntax.vo: TimeSyntax.v ./Time.vo
-TimeSyntax.vi: TimeSyntax.v ./Time.vo
-Timebase.vo: Timebase.v ./Time.vo ./TimeSyntax.vo
-Timebase.vi: Timebase.v ./Time.vo ./TimeSyntax.vo
-Trace.vo: Trace.v ./Transitions.vo ./LList.vo
-Trace.vi: Trace.v ./Transitions.vo ./LList.vo
+TimeSyntax.vo: TimeSyntax.v Time.vo
+TimeSyntax.vi: TimeSyntax.v Time.vo
+Timebase.vo: Timebase.v Time.vo TimeSyntax.vo
+Timebase.vi: Timebase.v Time.vo TimeSyntax.vo
+Trace.vo: Trace.v Transitions.vo LList.vo
+Trace.vi: Trace.v Transitions.vo LList.vo
 TransMod.vo: TransMod.v
 TransMod.vi: TransMod.v
 Transitions.vo: Transitions.v
 Transitions.vi: Transitions.v
-bug.vo: bug.v
-bug.vi: bug.v
-essai.vo: essai.v
-essai.vi: essai.v
-ABRdef.html: ABRdef.v ./PAuto.html
-ABRgen.html: ABRgen.v ./Time.html ./TimeSyntax.html ./Timebase.html ./Evenements.html
-AutoL.html: AutoL.v ./PAutomata.html
-AutoLMod.html: AutoLMod.v ./PAutomataMod.html
-Coercions.html: Coercions.v ./Time.html
-Evenements.html: Evenements.v ./Time.html ./Timebase.html
-Extract.html: Extract.v ./PAutoMod.html
+ABRdef.html: ABRdef.v PAuto.html
+ABRgen.html: ABRgen.v Time.html TimeSyntax.html Timebase.html Evenements.html
+AutoL.html: AutoL.v PAutomata.html
+AutoLMod.html: AutoLMod.v PAutomataMod.html
+Coercions.html: Coercions.v Time.html
+Evenements.html: Evenements.v Time.html Timebase.html
+Extract.html: Extract.v PAutoMod.html
+GAutomata.html: GAutomata.v TransMod.html
 LList.html: LList.v
-PAuto.html: PAuto.v ./Time.html ./TimeSyntax.html ./Transitions.html ./PAutomata.html ./Coercions.html ./AutoL.html
-PAutoMod.html: PAutoMod.v ./Time.html ./TimeSyntax.html ./TransMod.html ./PAutomataMod.html ./Coercions.html ./AutoLMod.html
-PAutomata.html: PAutomata.v ./Time.html ./TimeSyntax.html ./Transitions.html
-PAutomataMod.html: PAutomataMod.v ./Time.html ./TimeSyntax.html ./TransMod.html
-Properties.html: Properties.v ./Time.html ./Transitions.html ./PAutomata.html
+PAuto.html: PAuto.v Time.html TimeSyntax.html Transitions.html PAutomata.html Coercions.html AutoL.html
+PAutoMod.html: PAutoMod.v Time.html TimeSyntax.html TransMod.html PAutomataMod.html Coercions.html AutoLMod.html
+PAutomata.html: PAutomata.v Time.html TimeSyntax.html Transitions.html
+PAutomataMod.html: PAutomataMod.v Time.html TimeSyntax.html TransMod.html
+Properties.html: Properties.v Time.html Transitions.html PAutomata.html
 Time.html: Time.v
-TimeSyntax.html: TimeSyntax.v ./Time.html
-Timebase.html: Timebase.v ./Time.html ./TimeSyntax.html
-Trace.html: Trace.v ./Transitions.html ./LList.html
+TimeSyntax.html: TimeSyntax.v Time.html
+Timebase.html: Timebase.v Time.html TimeSyntax.html
+Trace.html: Trace.v Transitions.html LList.html
 TransMod.html: TransMod.v
 Transitions.html: Transitions.v
-bug.html: bug.v
-essai.html: essai.v

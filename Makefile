@@ -43,7 +43,7 @@ COQSRC=-I $(COQTOP)/kernel -I $(COQTOP)/lib \
   -I $(CAMLP4LIB)
 ZFLAGS=$(OCAMLLIBS) $(COQSRC)
 OPT=
-COQFLAGS=-q $(OPT) $(COQLIBS) $(COQ_XML)
+COQFLAGS=-q $(OPT) $(COQLIBS) $(OTHERFLAGS) $(COQ_XML)
 COQC=$(COQBIN)coqc
 GALLINA=gallina
 COQDOC=coqdoc
@@ -52,7 +52,6 @@ CAMLOPTC=ocamlopt -c
 CAMLLINK=ocamlc
 CAMLOPTLINK=ocamlopt
 COQDEP=$(COQBIN)coqdep -c
-COQVO2XML=coq_vo2xml
 GRAMMARS=grammar.cma
 CAMLP4EXTEND=pa_extend.cmo pa_ifdef.cmo q_MLast.cmo
 PP=-pp "camlp4o -I . -I $(COQTOP)/parsing $(CAMLP4EXTEND) $(GRAMMARS) -impl"
@@ -72,10 +71,10 @@ COQLIBS=-I .
 #                                 #
 ###################################
 
-VFILES=Time.v\
+VFILES=Transitions.v\
+  Time.v\
   TimeSyntax.v\
   Timebase.v\
-  Transitions.v\
   PAutomata.v\
   PAuto.v\
   Properties.v\
@@ -86,6 +85,7 @@ VFILES=Time.v\
   ABRdef.v\
   Evenements.v\
   ABRgen.v\
+  GAutomata.v\
   AutoLMod.v\
   PAutomataMod.v\
   TransMod.v\
@@ -97,10 +97,10 @@ GFILES=$(VFILES:.v=.g)
 HTMLFILES=$(VFILES:.v=.html)
 GHTMLFILES=$(VFILES:.v=.g.html)
 
-all: Time.vo\
+all: Transitions.vo\
+  Time.vo\
   TimeSyntax.vo\
   Timebase.vo\
-  Transitions.vo\
   PAutomata.vo\
   PAuto.vo\
   Properties.vo\
@@ -112,6 +112,7 @@ all: Time.vo\
   Evenements.vo\
   ABRgen.vo\
   PGM\
+  GAutomata.vo\
   AutoLMod.vo\
   PAutomataMod.vo\
   TransMod.vo\
@@ -133,28 +134,7 @@ all.ps: $(VFILES)
 all-gal.ps: $(VFILES)
 	$(COQDOC) -ps -g -o $@ `$(COQDEP) -sort -suffix .v $(VFILES)`
 
-xml:: .xml_time_stamp
-.xml_time_stamp: Time.vo\
-  TimeSyntax.vo\
-  Timebase.vo\
-  Transitions.vo\
-  PAutomata.vo\
-  PAuto.vo\
-  Properties.vo\
-  Coercions.vo\
-  AutoL.vo\
-  LList.vo\
-  Trace.vo\
-  ABRdef.vo\
-  Evenements.vo\
-  ABRgen.vo\
-  AutoLMod.vo\
-  PAutomataMod.vo\
-  TransMod.vo\
-  PAutoMod.vo\
-  Extract.vo
-	$(COQVO2XML) $(COQFLAGS) $(?:%.o=%)
-	touch .xml_time_stamp
+
 
 ###################
 #                 #
@@ -174,7 +154,7 @@ gCSMA_CD:
 #                  #
 ####################
 
-.PHONY: all opt byte archclean clean install depend xml PGM gCSMA_CD
+.PHONY: all opt byte archclean clean install depend html PGM gCSMA_CD
 
 .SUFFIXES: .v .vo .vi .g .html .tex .g.tex .g.html
 
@@ -207,16 +187,12 @@ opt:
 
 include .depend
 
-depend:
-	rm .depend
+.depend depend:
+	rm -f .depend
 	$(COQDEP) -i $(COQLIBS) *.v *.ml *.mli >.depend
 	$(COQDEP) $(COQLIBS) -suffix .html *.v >>.depend
 	(cd PGM ; $(MAKE) depend)
 	(cd gCSMA_CD ; $(MAKE) depend)
-
-xml::
-	(cd PGM ; $(MAKE) xml)
-	(cd gCSMA_CD ; $(MAKE) xml)
 
 install:
 	mkdir -p `$(COQC) -where`/user-contrib
@@ -228,6 +204,9 @@ Makefile: Make
 	mv -f Makefile Makefile.bak
 	$(COQBIN)coq_makefile -f Make -o Makefile
 
+	(cd PGM ; $(MAKE) Makefile)
+	(cd gCSMA_CD ; $(MAKE) Makefile)
+
 clean:
 	rm -f *.cmo *.cmi *.cmx *.o *.vo *.vi *.g *~
 	rm -f all.ps all-gal.ps $(HTMLFILES) $(GHTMLFILES)
@@ -238,6 +217,10 @@ archclean:
 	rm -f *.cmx *.o
 	(cd PGM ; $(MAKE) archclean)
 	(cd gCSMA_CD ; $(MAKE) archclean)
+
+html:
+	(cd PGM ; $(MAKE) html)
+	(cd gCSMA_CD ; $(MAKE) html)
 
 # WARNING
 #
