@@ -90,6 +90,7 @@ VFILES=Transitions.v\
   PAutomataMod.v\
   TransMod.v\
   PAutoMod.v\
+  PGAuto.v\
   Extract.v
 VOFILES=$(VFILES:.v=.vo)
 VIFILES=$(VFILES:.v=.vi)
@@ -117,6 +118,7 @@ all: Transitions.vo\
   PAutomataMod.vo\
   TransMod.vo\
   PAutoMod.vo\
+  PGAuto.vo\
   gCSMA_CD\
   Extract.vo
 

@@ -43,7 +43,6 @@ Record p_auto : Type :=
 
 End PAUTO_DEF.
 
-
 (*s Transition system associated to a p-automata *)
 
 Section TRANSITIONS.

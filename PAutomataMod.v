@@ -75,6 +75,7 @@ Definition Act := P_Act P.Pauto.
 Definition Trans := P_Trans P.Pauto.
 End Pauto_obj_to_struct.
 
+
 (** ** Transition systems associated to a p-automata *)
 
 Module LTS_of (P: Pauto_struct).
