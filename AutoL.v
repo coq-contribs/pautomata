@@ -71,9 +71,10 @@ Definition Var_proj (i : I) (Vx : Varsync) : V i :=
   fun v : Var (Vloc (AutSync i)) =>
   match v return (TypeVar (TVloc (AutSync i)) v) with
   | Glob x =>
-      if propre_dec x
-      then fun p => Vx (Local (Propre p))
-      else fun _ => Vx (Glob VarsyncL x)
+      match propre_dec x with
+      | left p => Vx (Local (Propre p))
+      | right _ => Vx (Glob VarsyncL x)
+      end
   | Local l => Vx (Local (LocaleI l))
   end.
 
