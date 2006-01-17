@@ -170,9 +170,10 @@ Definition Var_proj (i : I) (Vx : Varsync) : V i :=
   fun v =>
   match v as x return (TVars (TLoc (AutoLs i)) x) with
   | Glob x =>
-      if propre_dec x
-      then fun p => Vx (Local (Propre p))
-      else fun _ => Vx (Glob Lsync x)
+      match propre_dec x with
+      | left p => Vx (Local (Propre p))
+      | right _ => Vx (Glob Lsync x)
+   end
   | Local l => Vx (Local (LocaleI l))
   end.
 
