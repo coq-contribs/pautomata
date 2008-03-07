@@ -1,3 +1,4 @@
+-R . pautomata
 #Definition of transitions systems
 Transitions.v
 #Axiomatisation of time 
@@ -44,3 +45,15 @@ Extract.v
 #logic_Type.ml
 #pAutomataMod.ml
 #specif.ml        
+gCSMA_CD/Sender.v
+gCSMA_CD/Contexte.v
+gCSMA_CD/Bus.v
+gCSMA_CD/Block_gCSMA_CD.v
+gCSMA_CD/preambule.v
+PGM/String.v
+PGM/Map.v
+PGM/Pgm.v
+PGM/Queue.v
+PGM/Var.v
+PGM/Comp.v
+PGM/Vpauto.v
