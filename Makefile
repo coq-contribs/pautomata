@@ -81,25 +81,25 @@ VFILES:=Transitions.v\
   ABRdef.v\
   Evenements.v\
   ABRgen.v\
+  PGM/Queue.v\
+  PGM/Comp.v\
+  PGM/Var.v\
+  PGM/Map.v\
+  PGM/Vpauto.v\
+  PGM/String.v\
+  PGM/Pgm.v\
   GAutomata.v\
   AutoLMod.v\
   PAutomataMod.v\
   TransMod.v\
   PAutoMod.v\
   PGAuto.v\
-  Extract.v\
   gCSMA_CD/Sender.v\
   gCSMA_CD/Contexte.v\
   gCSMA_CD/Bus.v\
   gCSMA_CD/Block_gCSMA_CD.v\
   gCSMA_CD/preambule.v\
-  PGM/String.v\
-  PGM/Map.v\
-  PGM/Pgm.v\
-  PGM/Queue.v\
-  PGM/Var.v\
-  PGM/Comp.v\
-  PGM/Vpauto.v
+  Extract.v
 VOFILES:=$(VFILES:.v=.vo)
 GLOBFILES:=$(VFILES:.v=.glob)
 VIFILES:=$(VFILES:.v=.vi)
@@ -121,27 +121,25 @@ all: Transitions.vo\
   ABRdef.vo\
   Evenements.vo\
   ABRgen.vo\
-  PGM\
+  PGM/Queue.vo\
+  PGM/Comp.vo\
+  PGM/Var.vo\
+  PGM/Map.vo\
+  PGM/Vpauto.vo\
+  PGM/String.vo\
+  PGM/Pgm.vo\
   GAutomata.vo\
   AutoLMod.vo\
   PAutomataMod.vo\
   TransMod.vo\
   PAutoMod.vo\
   PGAuto.vo\
-  gCSMA_CD\
-  Extract.vo\
   gCSMA_CD/Sender.vo\
   gCSMA_CD/Contexte.vo\
   gCSMA_CD/Bus.vo\
   gCSMA_CD/Block_gCSMA_CD.vo\
   gCSMA_CD/preambule.vo\
-  PGM/String.vo\
-  PGM/Map.vo\
-  PGM/Pgm.vo\
-  PGM/Queue.vo\
-  PGM/Var.vo\
-  PGM/Comp.vo\
-  PGM/Vpauto.vo
+  Extract.vo
 
 spec: $(VIFILES)
 
@@ -163,25 +161,13 @@ all-gal.ps: $(VFILES)
 
 
 
-###################
-#                 #
-# Subdirectories. #
-#                 #
-###################
-
-PGM:
-	cd PGM ; $(MAKE) all
-
-gCSMA_CD:
-	cd gCSMA_CD ; $(MAKE) all
-
 ####################
 #                  #
 # Special targets. #
 #                  #
 ####################
 
-.PHONY: all opt byte archclean clean install depend html PGM gCSMA_CD
+.PHONY: all opt byte archclean clean install depend html
 
 .SUFFIXES: .v .vo .vi .g .html .tex .g.tex .g.html
 
@@ -223,27 +209,19 @@ opt:
 install:
 	mkdir -p `$(COQC) -where`/user-contrib
 	cp -f $(VOFILES) `$(COQC) -where`/user-contrib
-	(cd PGM ; $(MAKE) install)
-	(cd gCSMA_CD ; $(MAKE) install)
 
 Makefile: Make
 	mv -f Makefile Makefile.bak
 	$(COQBIN)coq_makefile -f Make -o Makefile
 
-	(cd PGM ; $(MAKE) Makefile)
-	(cd gCSMA_CD ; $(MAKE) Makefile)
 
 clean:
 	rm -f *.cmo *.cmi *.cmx *.o $(VOFILES) $(VIFILES) $(GFILES) *~
 	rm -f all.ps all-gal.ps all.glob $(VFILES:.v=.glob) $(HTMLFILES) $(GHTMLFILES) $(VFILES:.v=.tex) $(VFILES:.v=.g.tex) $(VFILES:.v=.v.d)
 	- rm -rf html
-	(cd PGM ; $(MAKE) clean)
-	(cd gCSMA_CD ; $(MAKE) clean)
 
 archclean:
 	rm -f *.cmx *.o
-	(cd PGM ; $(MAKE) archclean)
-	(cd gCSMA_CD ; $(MAKE) archclean)
 
 
 -include $(VFILES:.v=.v.d)

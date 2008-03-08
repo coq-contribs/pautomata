@@ -37,7 +37,7 @@ Section LTS_PROP.
 Variable L : LTS.
 Let state := LTS_State L.
 Let action := LTS_Act L.
-Let transition := LTS_Trans (l:=L).
+Let transition := LTS_Trans (LTS:=L).
 
 (*s Some properties *)
 
@@ -75,8 +75,8 @@ Let state1 := LTS_State L1.
 Let state2 := LTS_State L2.
 Let act1 := LTS_Act L1.
 Let act2 := LTS_Act L2.
-Let trans1 := LTS_Trans (l:=L1).
-Let trans2 := LTS_Trans (l:=L2).
+Let trans1 := LTS_Trans (LTS:=L1).
+Let trans2 := LTS_Trans (LTS:=L2).
 
 Definition act_synchro : Set := (act1 * act2)%type.
 
@@ -121,7 +121,7 @@ Variable L : LTS.
 
 Let act := LTS_Act L.
 Let state := LTS_State L.
-Let transition := LTS_Trans (l:=L).
+Let transition := LTS_Trans (LTS:=L).
 Let action := LTS_Act L.
 
 (*s [R] is a bisimulation *)

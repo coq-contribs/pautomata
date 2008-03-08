@@ -24,7 +24,14 @@ ABRgen.v
 #Abr3.v
 #Abr3_proof.v
 # Proof of the PGM protocol
-PGM
+PGM/Queue.v
+PGM/Comp.v
+PGM/Var.v
+PGM/Map.v
+PGM/Vpauto.v
+PGM/String.v
+PGM/Pgm.v
+
 #Modular version
 # Definition of generalised hybrid systems
 GAutomata.v
@@ -34,7 +41,11 @@ TransMod.v
 PAutoMod.v
 PGAuto.v
 #Modular modelisation of gCSMA_CD
-gCSMA_CD
+gCSMA_CD/Sender.v
+gCSMA_CD/Contexte.v
+gCSMA_CD/Bus.v
+gCSMA_CD/Block_gCSMA_CD.v
+gCSMA_CD/preambule.v
 #Extraction 
 Extract.v
 #datatypes.ml
@@ -45,15 +56,4 @@ Extract.v
 #logic_Type.ml
 #pAutomataMod.ml
 #specif.ml        
-gCSMA_CD/Sender.v
-gCSMA_CD/Contexte.v
-gCSMA_CD/Bus.v
-gCSMA_CD/Block_gCSMA_CD.v
-gCSMA_CD/preambule.v
-PGM/String.v
-PGM/Map.v
-PGM/Pgm.v
-PGM/Queue.v
-PGM/Var.v
-PGM/Comp.v
-PGM/Vpauto.v
+
