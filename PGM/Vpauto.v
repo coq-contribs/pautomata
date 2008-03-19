@@ -138,9 +138,9 @@ End URGENT_INV_TRANS_DEF.
 Variable vp : vp_auto.
 
 Definition is_urgent (l : Loc (Auto vp)) : Prop :=
-  is_urgent_inv (loc:=Loc (Auto vp)) (P_Inv (V:=pvaluation) (p_auto:=Auto vp)) l /\
+  is_urgent_inv (loc:=Loc (Auto vp)) (P_Inv (V:=pvaluation) (p:=Auto vp)) l /\
   is_urgent_trans (loc:=Loc (Auto vp)) (act:=P_Act (Auto vp))
-    (P_Trans (V:=pvaluation) (p_auto:=Auto vp)) l.
+    (P_Trans (V:=pvaluation) (p:=Auto vp)) l.
 
 End URGENT_DEF.
 
@@ -191,9 +191,9 @@ End TIMER_INV_TRANS_DEF.
 Variable vp : vp_auto.
 
 Definition is_timer (l : Loc (Auto vp)) : Prop :=
-  is_timer_inv (loc:=Loc (Auto vp)) (P_Inv (V:=pvaluation) (p_auto:=Auto vp)) l /\
+  is_timer_inv (loc:=Loc (Auto vp)) (P_Inv (V:=pvaluation) (p:=Auto vp)) l /\
   is_timer_trans (loc:=Loc (Auto vp)) (act:=P_Act (Auto vp))
-    (P_Trans (V:=pvaluation) (p_auto:=Auto vp)) l.
+    (P_Trans (V:=pvaluation) (p:=Auto vp)) l.
 
 End TIMER_DEF.
 
@@ -244,14 +244,14 @@ Variable index_domain : Set.
 Variable others : list index_domain.
 
 Let sharedvariables := Shared_Variables vp.
-Let iscritical := Is_Critical (vp_auto:=vp).
+Let iscritical := Is_Critical (v:=vp).
 
 
 Let loc := Loc (Auto vp).
-Let inv := P_Inv (V:=pvaluation) (p_auto:=Auto vp).
+Let inv := P_Inv (V:=pvaluation) (p:=Auto vp).
 Let act := P_Act (Auto vp).
 
-Let trans := P_Trans (V:=pvaluation) (p_auto:=Auto vp).
+Let trans := P_Trans (V:=pvaluation) (p:=Auto vp).
 
 Definition new_loc := loc.
 
@@ -478,12 +478,12 @@ Section RENAME_LABEL_DEF.
 Variable vp : vp_auto.
 
 Let sharedvariables := Shared_Variables vp.
-Let iscritical := Is_Critical (vp_auto:=vp).
+Let iscritical := Is_Critical (v:=vp).
 
 Let loc := Loc (Auto vp).
-Let inv := P_Inv (V:=pvaluation) (p_auto:=Auto vp).
+Let inv := P_Inv (V:=pvaluation) (p:=Auto vp).
 Let act := P_Act (Auto vp).
-Let trans := P_Trans (V:=pvaluation) (p_auto:=Auto vp).
+Let trans := P_Trans (V:=pvaluation) (p:=Auto vp).
 
 Variable newact : Set.
 Variable projnaming : newact -> act.
