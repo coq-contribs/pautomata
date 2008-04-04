@@ -1,4 +1,4 @@
--R . pautomata
+-R . PAutomata
 #Definition of transitions systems
 Transitions.v
 #Axiomatisation of time 

@@ -24,8 +24,8 @@
 #########################
 
 OCAMLLIBS:=
-COQLIBS:= -R . pautomata
-COQDOCLIBS:=-R . pautomata
+COQLIBS:= -R . PAutomata
+COQDOCLIBS:=-R . PAutomata
 
 ##########################
 #                        #
@@ -107,40 +107,7 @@ GFILES:=$(VFILES:.v=.g)
 HTMLFILES:=$(VFILES:.v=.html)
 GHTMLFILES:=$(VFILES:.v=.g.html)
 
-all: Transitions.vo\
-  Time.vo\
-  TimeSyntax.vo\
-  Timebase.vo\
-  PAutomata.vo\
-  PAuto.vo\
-  Properties.vo\
-  Coercions.vo\
-  AutoL.vo\
-  LList.vo\
-  Trace.vo\
-  ABRdef.vo\
-  Evenements.vo\
-  ABRgen.vo\
-  PGM/Queue.vo\
-  PGM/Comp.vo\
-  PGM/Var.vo\
-  PGM/Map.vo\
-  PGM/Vpauto.vo\
-  PGM/String.vo\
-  PGM/Pgm.vo\
-  GAutomata.vo\
-  AutoLMod.vo\
-  PAutomataMod.vo\
-  TransMod.vo\
-  PAutoMod.vo\
-  PGAuto.vo\
-  gCSMA_CD/Sender.vo\
-  gCSMA_CD/Contexte.vo\
-  gCSMA_CD/Bus.vo\
-  gCSMA_CD/Block_gCSMA_CD.vo\
-  gCSMA_CD/preambule.vo\
-  Extract.vo
-
+all: $(VOFILES) 
 spec: $(VIFILES)
 
 gallina: $(GFILES)
@@ -169,8 +136,6 @@ all-gal.ps: $(VFILES)
 
 .PHONY: all opt byte archclean clean install depend html
 
-.SUFFIXES: .v .vo .vi .g .html .tex .g.tex .g.html
-
 %.vo %.glob: %.v
 	$(COQC) -dump-glob $*.glob $(COQDEBUG) $(COQFLAGS) $*
 
@@ -192,13 +157,8 @@ all-gal.ps: $(VFILES)
 %.g.html: %.v %.glob
 	$(COQDOC) -glob-from $*.glob -html -g $< -o $@
 
-%.v.d.raw: %.v
-	$(COQDEP) -slash $(COQLIBS) "$<" > "$@"\
-	  || ( RV=$$?; rm -f "$@"; exit $${RV} )
-
-%.v.d: %.v.d.raw
-	$(HIDE)sed 's/\(.*\)\.vo[[:space:]]*:/\1.vo \1.glob:/' < "$<" > "$@" \
-	  || ( RV=$$?; rm -f "$@"; exit $${RV} )
+%.v.d: %.v
+	$(COQDEP) -glob -slash $(COQLIBS) "$<" > "$@" || ( RV=$$?; rm -f "$@"; exit $${RV} )
 
 byte:
 	$(MAKE) all "OPT:=-byte"
