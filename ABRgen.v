@@ -516,7 +516,7 @@ apply Tle_trans with t; trivial.
 case recn; clear recn.
 apply ACR_inv_inv with (1 := invn).
 case invn;
- intros P1 P2 P3 acrt' ech' prop1 prop2 (prop3, prop4, prop5, prop6) prop7.
+ intros P1 P2 P3 acrt' ech' prop1 prop2 (prop3, prop4, prop5) prop6 prop7.
 exists acrt' (add_sch tn rn ech'); intros.
 simpl in |- *; case (Tle_lt_dec tn t'); auto.
 auto with abr eve.
