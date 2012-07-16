@@ -26,6 +26,7 @@ Require Import Time.
 Require Import TimeSyntax.
 Require Import Transitions.
 
+Global Set Asymmetric Patterns.
 Set Implicit Arguments.
 Unset Strict Implicit.
 

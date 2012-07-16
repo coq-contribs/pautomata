@@ -28,6 +28,7 @@ of global variables is localised for further synchronisation
 
 Require Import PAutomataMod.
 
+Global Set Asymmetric Patterns.
 Set Implicit Arguments.
 Unset Strict Implicit.
 
