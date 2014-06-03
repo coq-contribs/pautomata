@@ -29,6 +29,8 @@ Require Import TimeSyntax.
 Require Import ZArithRing.
 Require Import Omega.
 
+Unset Standard Proposition Elimination Names.
+
 (**************************************************************************)
 (*                            Basic Lemmas                                *)
 (**************************************************************************)

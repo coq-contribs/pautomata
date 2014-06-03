@@ -29,6 +29,7 @@ Require Import Evenements.
 
 Set Implicit Arguments.
 Unset Strict Implicit.
+Unset Standard Proposition Elimination Names.
 
 (*s Introducing $\tau_2$ and $\tau_3$ as positive times 
     such that $0 < \tau_3 < \tau_2$ *)
