@@ -17,7 +17,6 @@
 (********************************************************************
   Definition du block gCSMA_CD
 *********************************************************************)
-Add LoadPath "..".
 Require Import preambule.
 Require Import Contexte.
 Require Import Sender.
