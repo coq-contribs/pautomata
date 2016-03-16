@@ -1,4 +1,5 @@
 -R . PAutomata
+
 #Definition of transitions systems
 Transitions.v
 #Axiomatisation of time 
@@ -21,8 +22,6 @@ ABRdef.v
 Evenements.v
 ABRgen.v
 # Proof of the ABR with 3 stored values
-#Abr3.v
-#Abr3_proof.v
 # Proof of the PGM protocol
 PGM/Queue.v
 PGM/Comp.v
@@ -31,7 +30,6 @@ PGM/Map.v
 PGM/Vpauto.v
 PGM/String.v
 PGM/Pgm.v
-
 #Modular version
 # Definition of generalised hybrid systems
 GAutomata.v
@@ -48,12 +46,3 @@ gCSMA_CD/Block_gCSMA_CD.v
 gCSMA_CD/preambule.v
 #Extraction 
 Extract.v
-#datatypes.ml
-#logic.ml
-#peano.ml
-#time.ml
-#fast_integer.ml
-#logic_Type.ml
-#pAutomataMod.ml
-#specif.ml        
-
