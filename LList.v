@@ -32,7 +32,7 @@ CoInductive LList : Type :=
   | LNil : LList
   | LCons : A -> LList -> LList. 
 
-(* Egalité entre 2 LList, définie co-inductivement *)
+(* EgalitÃ© entre 2 LList, dÃ©finie co-inductivement *)
 
 CoInductive eq_LList : LList -> LList -> Prop :=
   | eq_LNil : eq_LList LNil LNil
@@ -130,7 +130,7 @@ simple destruct 1; constructor.
 simple destruct 2; constructor; auto.
 Qed.
 
-(**** Concaténation  *****)
+(**** ConcatÃ©nation  *****)
 
 (* ConcatL m l concatene l a la tete de m 
    si l = l1.l2.....ln.nil alors ConcatL m l = l1.l2.....ln.m

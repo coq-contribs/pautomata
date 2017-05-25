@@ -29,9 +29,9 @@ Require Import Time.
 Require Import Transitions.
 Require Import PAutomata.
 
-(* Correspondance entre le système de transitions associé à la synchronisation
-   locale de deux p-automates et la synchronisation des deux systèmes de 
-   transitions associés aux p-automates *)
+(* Correspondance entre le systÃ¨me de transitions associÃ© Ã  la synchronisation
+   locale de deux p-automates et la synchronisation des deux systÃ¨mes de 
+   transitions associÃ©s aux p-automates *)
 
 Section THEOREM_SYNCHRO.
 
@@ -48,7 +48,7 @@ Definition L2 := P_auto_LTS Paut2.
 Let LTS_sync := P_auto_LTS Pauts.
 
 (* Correspondance du vecteur de synchronisation sur les actions du produit 
-   synchronisé de L1 et L2 *)
+   synchronisÃ© de L1 et L2 *)
 Definition LTS_Vectsync (a : act_synchro L1 L2) : Prop :=
   match a with
   | (Dis a1, Dis a2) => Vectsync (a1, a2)
@@ -62,7 +62,7 @@ Let LTS12_sync : LTS :=
      let (s1, s2) := s in time_of s1 = time_of s2).
 
 (* Projection d'une action de LTS12_sync en une action de LTS_sync, 
-   une valeur bidon est prise pour les cas par défaut *)
+   une valeur bidon est prise pour les cas par dÃ©faut *)
 
 Definition project_act_sync (a : LTS_Act LTS12_sync) : 
   LTS_Act LTS_sync :=
@@ -72,7 +72,7 @@ Definition project_act_sync (a : LTS_Act LTS12_sync) :
   | _ => Temp Pauts T0
   end.
 
-(* Projection d'une etat de LTS12_sync en un état de LTS_sync *)
+(* Projection d'une etat de LTS12_sync en un Ã©tat de LTS_sync *)
 
 Definition project_state_sync (s : LTS_State LTS12_sync) :
   LTS_State LTS_sync :=
@@ -90,7 +90,7 @@ Definition project_act_sync2 (a : LTS_Act LTS_sync) :
   | Dis (a1, a2) => (Dis (P:=Paut1) a1, Dis (P:=Paut2) a2)
   end.
 
-(* Projection d'une etat de LTS_sync en un état de LTS12_sync *)
+(* Projection d'une etat de LTS_sync en un Ã©tat de LTS12_sync *)
 
 Definition project_state_sync2 (s : LTS_State LTS_sync) :
   LTS_State LTS12_sync :=
@@ -103,8 +103,8 @@ Definition project_state_sync2 (s : LTS_State LTS_sync) :
 (* sous-jacent de 2 Pautomates est identique au   	*)
 (* systeme de transitions sous-jacent a la        	*)
 (* synchronisation des deux Pautomates  en se 		*)
-(* restreignant aux couples d'états qui partagent le 	*)
-(* même temps                                           *)
+(* restreignant aux couples d'Ã©tats qui partagent le 	*)
+(* mÃªme temps                                           *)
 
 Lemma LTS12_to_LTS :
  forall (s s' : LTS_State LTS12_sync) (a : LTS_Act LTS12_sync),

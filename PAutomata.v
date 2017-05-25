@@ -48,7 +48,7 @@ Definition P_Invariant (L : Set) := L -> Time -> V -> Prop.
    la valeur initiale des variables, l2 la place finale et v2 la valeur finale des variables *)
 Definition P_Transitions (L A : Set) := A -> Time -> L -> V -> L -> V -> Prop.
 
-(* Un p-automate sur le domaine V est formé d'un ensemble de places Loc, d'un invariant sur 
+(* Un p-automate sur le domaine V est formÃ© d'un ensemble de places Loc, d'un invariant sur 
    ces places, d'un ensemble d'actions Act et d'un ensemble de transitions *)
 
 Record p_auto : Type := 
@@ -67,12 +67,12 @@ Section TRANSITIONS.
 Variable V : Type.
 Variable P : p_auto V.
 
-(* Un état associé au p-automate est formé d'une place 
+(* Un Ã©tat associÃ© au p-automate est formÃ© d'une place 
    d'une valeur d'horloge et d'une valeur pour les variables *)
 
 Record P_state : Type :=  {loc_of : Loc P; time_of : Time; val_of : V}.
 
-(* Les états admissibles sont ceux qui vérifient l'invariant *)
+(* Les Ã©tats admissibles sont ceux qui vÃ©rifient l'invariant *)
 Definition adm (e : P_state) : Prop :=
   P_Inv (loc_of e) (time_of e) (val_of e).
 
@@ -87,15 +87,15 @@ Definition adm_until (e : P_state) (t : Time) : Prop :=
   forall T : Time, time_of e </ T -> T <=/ t -> P_Inv (loc_of e) T (val_of e).
 
 
-(* Les actions du système de transitions associé sont des actions discrètes 
+(* Les actions du systÃ¨me de transitions associÃ© sont des actions discrÃ¨tes 
    correspondant aux actions du p-automate ou bien des actions temporelles
-   correspondant à l'écoulement du temps dans un état admissible *)
+   correspondant Ã  l'Ã©coulement du temps dans un Ã©tat admissible *)
 
 Inductive Act_time : Set :=
   | Dis : P_Act P -> Act_time
   | Temp : Time -> Act_time.
 
-(* Les transitions se font entre états admissibles *)
+(* Les transitions se font entre Ã©tats admissibles *)
 
 Inductive transitionI (e1 e2 : P_state) : Act_time -> Prop :=
   | trans_act :
@@ -116,8 +116,8 @@ Definition P_auto_LTS : LTS := Build_LTS P_transition.
 Definition P_stable (inv : P_state -> Prop) :=
   forall (x y : P_state) (a : Act_time), P_transition x a y -> inv x -> inv y.
 
-(* Un deuxième système de transitions est obtenu en combinant les actions 
-   temporelles et discrètes *)
+(* Un deuxiÃ¨me systÃ¨me de transitions est obtenu en combinant les actions 
+   temporelles et discrÃ¨tes *)
 
 Inductive P_trans_direct (e1 : P_state) (a : P_Act P) 
 (e2 : P_state) : Prop :=
@@ -256,8 +256,8 @@ End SYNCHRO_GLOB.
 
 Section SYNCHRO_MULT.
 (* Synchronisation multiple sur une famille de p-automates
-  Une famille $(a_i)_{i \in I}$ est représentée comme une fonction de $i$ in $I $
-  dans le type de $a_i$ qui peut lui même dépendre de $i$ *)
+  Une famille $(a_i)_{i \in I}$ est reprÃ©sentÃ©e comme une fonction de $i$ in $I $
+  dans le type de $a_i$ qui peut lui mÃªme dÃ©pendre de $i$ *)
 
 Variable I : Set.
 Variable V : I -> Set.

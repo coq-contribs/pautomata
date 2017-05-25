@@ -29,14 +29,14 @@ Require Import PAuto.
 
 Section ABR_Model.
 
-(* Les paramètres : tau, le moment de l'observation, tau2 et tau3 les delais 
+(* Les paramÃ¨tres : tau, le moment de l'observation, tau2 et tau3 les delais 
    minimaux et maximaux de transmissions *)
 
 Variable tau tau2 tau3 : Time.
 
-(* L'automate P1 (Aenv) qui représente l'arrivée des cellules RM et 
+(* L'automate P1 (Aenv) qui reprÃ©sente l'arrivÃ©e des cellules RM et 
    le snapshot a l'instant tau *)
-(* Une seule variable R correspondant à la valeur de la cellule RM *)
+(* Une seule variable R correspondant Ã  la valeur de la cellule RM *)
 
 Definition ABRvar1 : Set := Z.
 Inductive ABRloc1 : Set :=
@@ -60,9 +60,9 @@ Definition ABRinv1 : P_Invariant ABRvar1 ABRloc1 :=
 
 Definition P1 : p_auto ABRvar1 := Build_p_auto ABRinv1 ABRtrans1.
 
-(* Modelisation de l'automate AI qui  représente l'algorithme idéal       *)
+(* Modelisation de l'automate AI qui  reprÃ©sente l'algorithme idÃ©al       *)
 (* Les variables sont de la forme (E,R) avec R la valeur de la cellule 
-   RM et E la valeur ideale calculée                                      *)
+   RM et E la valeur ideale calculÃ©e                                      *)
 
 Definition ABRvar2 : Set := (Z * Z)%type.
 Inductive ABRloc2 : Set :=
@@ -108,14 +108,14 @@ Definition ABRinv2 : P_Invariant ABRvar2 ABRloc2 :=
 Definition P2 : p_auto ABRvar2 := Build_p_auto ABRinv2 ABRtrans2.          
 
 
-(* Modélisation de l'automate qui représente l'algorithme approximatif B' *)
+(* ModÃ©lisation de l'automate qui reprÃ©sente l'algorithme approximatif B' *)
 
 (* Cet automate a pour variables (Emx,Efi,Ela,R,A,tfi,tla) 
-   Efi et Ela sont les deux valeurs stockées de débit correspondant 
+   Efi et Ela sont les deux valeurs stockÃ©es de dÃ©bit correspondant 
    au temps tfi et tla, 
    Emx est une variable auxiliaire qui stocke la valeur max de Ela et Efi
-   A représente la valeur de débit courante et 
-   R la valeur de la dernière cellule reçue
+   A reprÃ©sente la valeur de dÃ©bit courante et 
+   R la valeur de la derniÃ¨re cellule reÃ§ue
   *)
 
 Record ABRvar3 : Set := cons_ABRvar3
@@ -241,13 +241,13 @@ Definition P3 : p_auto ABRvar3 := Build_p_auto ABRinv3 ABRtrans3.
 
 (*  La synchronisation des trois automates *)
 
-(* Ensemble d'index à trois éléments *)
+(* Ensemble d'index Ã  trois Ã©lÃ©ments *)
 Inductive I : Set :=
   | one : I
   | two : I
   | three : I.
 
-(* On construit une fonction de type (i:I)(P i) à partir de 3 valeurs *)
+(* On construit une fonction de type (i:I)(P i) Ã  partir de 3 valeurs *)
 Definition triple (P : I -> Type) (p1 : P one) (p2 : P two) 
   (p3 : P three) (i : I) : P i :=
   match i as x return (P x) with
@@ -269,11 +269,11 @@ Definition ABRactI (i : I) : Set := option (P_Act (ABRaut_I i)).
 
 Definition ABRact : Set := forall i : I, ABRactI i.
 
-(* Le type des variables de l'automate synchronisé :
+(* Le type des variables de l'automate synchronisÃ© :
    La variable R est commune aux trois automates *)
 Record ABVRSync : Set :=  {E : Z; p3 : ABRvar3}.
 
-(* La fonction de projection indexée *)
+(* La fonction de projection indexÃ©e *)
 Definition ABRproj (i : I) (V : ABVRSync) : ABVRSync_I i :=
   triple ABVRSync_I (R (p3 V)) (E V, R (p3 V)) (p3 V) i.
 
@@ -287,7 +287,7 @@ Inductive ABR_vectSync : ABRact -> Prop :=
   | ABR_sync1 : ABR_vectSync sync1
   | ABR_sync2 : ABR_vectSync sync2.
 
-(* Definition de l'automate synchronisé *)
+(* Definition de l'automate synchronisÃ© *)
 Definition P_ABR := Pauto_sync_mult ABRproj ABR_vectSync.
 
 End ABR_Model.

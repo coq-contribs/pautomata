@@ -17,7 +17,7 @@
 (** p-Automates avec variables globales et locales 
 
     Une version des p-automates qui introduit un ensemble de noms de
-    variables associées à des types. 
+    variables associÃ©es Ã  des types. 
 
 La synchronisation fait un produit sur les varaibles locales, 
 permet de localiser certaines variables globales 
