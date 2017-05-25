@@ -96,13 +96,13 @@ End Pauto_obj_to_struct.
 
 Module LTS_of (P: Pauto_struct).
 
-(** Un état associé au p-automate est formé d'une place 
+(** Un Ã©tat associÃ© au p-automate est formÃ© d'une place 
    d'une valeur d'horloge et d'une valeur pour les variables *)
 
 Record P_state : Type := mk_state
   {loc_of : P.Loc; time_of : Time; val_of : P.Var}.
 
-(* Les états admissibles sont ceux qui vérifient l'invariant *)
+(* Les Ã©tats admissibles sont ceux qui vÃ©rifient l'invariant *)
 Definition adm (e : P_state) : Prop :=
   P.Inv (loc_of e) (time_of e) (val_of e).
 
@@ -117,15 +117,15 @@ Definition adm_until (e : P_state) (t : Time) : Prop :=
   forall T : Time, time_of e </ T -> T <=/ t -> P.Inv (loc_of e) T (val_of e).
 
 
-(* Les actions du système de transitions associé sont des actions discrètes 
+(* Les actions du systÃ¨me de transitions associÃ© sont des actions discrÃ¨tes 
    correspondant aux actions du p-automate ou bien des actions temporelles
-   correspondant à l'écoulement du temps dans un état admissible *)
+   correspondant Ã  l'Ã©coulement du temps dans un Ã©tat admissible *)
 
 Inductive Act_time : Set :=
   | Dis : P.Act -> Act_time
   | Temp : Time -> Act_time.
 
-(* Les transitions se font entre états admissibles *)
+(* Les transitions se font entre Ã©tats admissibles *)
 
 Inductive transitionI (e1 e2 : P_state) : Act_time -> Prop :=
   | trans_act :
@@ -146,8 +146,8 @@ Definition Trans : LTS_Transitions State Act :=
 End I1.
 
 
-(* Un deuxième système de transitions est obtenu en combinant les actions 
-   temporelles et discrètes *)
+(* Un deuxiÃ¨me systÃ¨me de transitions est obtenu en combinant les actions 
+   temporelles et discrÃ¨tes *)
 
 Inductive P_trans_direct (e1 : P_state) (a : P.Act) (e2 : P_state) : Prop :=
     trans_direct_intro :
