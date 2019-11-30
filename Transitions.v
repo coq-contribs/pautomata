@@ -171,14 +171,14 @@ CoInductive StateEquiv : state -> state -> Prop :=
 
 (* Properties of [StateEquiv] *)
 Lemma StateEquiv_refl : forall p : state, StateEquiv p p.
-cofix.
+cofix StateEquiv_refl.
 intro; constructor; intros.
 exists p'; auto.
 exists q'; auto.
 Qed.
 
 Lemma StateEquiv_sym : forall p q : state, StateEquiv p q -> StateEquiv q p.
-cofix.
+cofix StateEquiv_sym.
 simple destruct 1; intros; constructor; intros.
 case H1 with a p'; intros; trivial.
 exists x; auto.
@@ -188,7 +188,7 @@ Qed.
 
 Lemma StateEquiv_trans :
  forall p q r : state, StateEquiv p q -> StateEquiv q r -> StateEquiv p r.
-cofix; intros p q r H1.
+cofix StateEquiv_trans; intros p q r H1.
 case H1; clear H1 p q; intros.
 inversion_clear H1; intros.
 constructor; intros.
@@ -217,7 +217,7 @@ Qed.
 Lemma StBEquiv_StateEquiv :
  forall p q : state, StBEquiv p q -> StateEquiv p q.
 simple destruct 1; intros R Rpq Bi; generalize p q Rpq.
-cofix; intros.
+cofix StBEquiv_StateEquiv; intros.
 case Bi with (1 := Rpq0); intros.
 constructor; intros.
 case H0 with (1 := H2); intros.

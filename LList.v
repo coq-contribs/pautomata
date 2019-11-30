@@ -41,14 +41,14 @@ CoInductive eq_LList : LList -> LList -> Prop :=
       eq_LList l l' -> eq_LList (LCons a l) (LCons a l').
 
 Lemma eq_LList_refl : forall l : LList, eq_LList l l.
-cofix.
+cofix eq_LList_refl.
 simple destruct l.
 constructor.
 constructor; trivial.
 Qed.
 
 Lemma eq_LList_sym : forall l l' : LList, eq_LList l l' -> eq_LList l' l.
-cofix.
+cofix eq_LList_sym.
 simple destruct 1.
 constructor.
 constructor.
@@ -59,7 +59,7 @@ Qed.
 Lemma eq_LList_trans :
  forall l1 l2 l3 : LList, eq_LList l1 l2 -> eq_LList l2 l3 -> eq_LList l1 l3.
 
-cofix.
+cofix eq_LList_trans.
 simple destruct 1; intros; trivial.
 inversion_clear H1.
 constructor.

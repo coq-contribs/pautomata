@@ -75,7 +75,7 @@ End Localize_struct.
 Module Localize (L: Localize_struct).
 (** Localisation of a subset of global variables *)
 Record VarLoc : Set := mkVarLoc {vlocname : G.V; is_local : L.local vlocname}.
-Implicit Arguments mkVarLoc [].
+Arguments mkVarLoc : clear implicits.
 Definition V := VarLoc.
 Definition TV (v : V) : Set := G.TV (vlocname v).
 End Localize.
@@ -86,7 +86,7 @@ End Localize.
  
 Record PautL : Type := mk_autol
   {Loc : Set; TLoc : Loc -> Set; Paut : p_auto (VectVar TLoc)}.
-Implicit Arguments TLoc [].
+Arguments TLoc : clear implicits.
 
 Definition P_LocL (p : PautL) := P_Loc (Paut p).
 Definition P_ActL (p : PautL) := P_Act (Paut p).

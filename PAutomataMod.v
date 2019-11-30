@@ -53,8 +53,8 @@ Record p_auto (V : Type) : Type := mk_auto
    P_Act : Set;
    P_Trans : P_Transitions V P_Loc P_Act}.
 
-Implicit Arguments P_Inv [V].
-Implicit Arguments P_Trans [V].
+Arguments P_Inv [V].
+Arguments P_Trans [V].
 
 Module Type Pauto_obj.
 Parameter Var : Type.

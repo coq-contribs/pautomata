@@ -30,4 +30,4 @@ Require Export PAutomata.
 Require Export Coercions.
 Require Export AutoL.
 
-Implicit Arguments Some [A].
+Arguments Some [A].

@@ -21,7 +21,7 @@
 Require Import Contexte.
 Import AutoLGen.
 
-Variable _pid : Z.
+Local Parameter _pid : Z.
 
 Inductive loc : Set :=
   | Wait : loc

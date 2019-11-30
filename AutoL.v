@@ -52,12 +52,12 @@ Record VarLoc (local : VarName -> Prop) : Set :=
 Definition TypeVarLoc (local : VarName -> Prop) (v : VarLoc local) : Set :=
   TypeVarName (vlocname v).
 
-Implicit Arguments TypeVarLoc [local].
+Arguments TypeVarLoc [local].
 
 Record PautL : Type := 
   {Vloc : Set; TVloc : Vloc -> Set; Paut : p_auto (VectVar TVloc)}.
 
-Implicit Arguments TVloc [].
+Arguments TVloc : clear implicits.
 
 Variable I : Set.
 
@@ -103,5 +103,5 @@ Definition PautoL_sync_mult :=
    
 End PAUTO.
 
-Implicit Arguments Build_VarLoc [VarName].
-Implicit Arguments TypeVarLoc [VarName].
+Arguments Build_VarLoc [VarName].
+Arguments TypeVarLoc [VarName].

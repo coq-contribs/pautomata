@@ -43,7 +43,7 @@ Unset Strict Implicit.
 (*                                                   *)
 (*****************************************************)
 
-Variable MESSAGE_PASSING_TIME : Time. 
+Local Parameter MESSAGE_PASSING_TIME : Time. 
 
 Inductive MESSAGE : Set :=
   | SPM : nat -> nat -> MESSAGE (* SPM   (trail, lead) *)
@@ -89,7 +89,7 @@ Definition is_ncf (m : MESSAGE) : Prop :=
 (*                                                   *)
 (*****************************************************)
 
-Variable DATA_RPT_RTE : Time.
+Local Parameter DATA_RPT_RTE : Time.
 
 Section ENVIORNMENT_DEF.
 
