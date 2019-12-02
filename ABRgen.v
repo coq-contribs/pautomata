@@ -253,7 +253,7 @@ intros l t t' r Hlt flt x (fall, exi) infxr.
 split.
 apply ACRA_forall_add; auto with zarith.
 apply forall_incl_sch with (2 := fall).
-intros; apply Zle_trans with x; auto.
+intros; apply Z.le_trans with x; auto.
 apply ACRA_exists_last; auto.
 Qed.
 
@@ -452,7 +452,7 @@ apply Tle_trans with u; auto with time.
 rewrite ACR_add_gt with (t := u); auto with Time.
 case (Tle_lt_dec t v); intros.
 rewrite ACR_add_le; auto with zarith.
-apply Zle_trans with (last_val acrt ech0); auto with zarith.
+apply Z.le_trans with (last_val acrt ech0); auto with zarith.
 apply decr_from_ACR_sup_last with (2 := H3); trivial.
 rewrite ACR_add_gt; auto with zarith.
 Qed.
@@ -560,7 +560,7 @@ Lemma add_sup :
 
 simple induction ech; clear ech.
 (* Case [ech=vide] *)
-case (Z_eq_dec acrt r); intro.
+case (Z.eq_dec acrt r); intro.
 (* acrt = r *)
 exists vide; auto with abr eve.
 (* acrt <> r *)
@@ -577,7 +577,7 @@ exists ech'; auto with abr; intros.
 rewrite ACR_add_gt; auto.
 apply Tlt_le_trans with (t +/ tau3); auto with time.
 (* [t0<t], add [(t,r)] excepts when [r=r0] *)
-case (Z_eq_dec r0 r); intro.
+case (Z.eq_dec r0 r); intro.
 (* [r=r0] *)
 exists (add_sch t0 r0 ech); auto with abr eve time; intros.
 rewrite ACR_add_le; trivial.
@@ -620,7 +620,7 @@ Lemma add_inf :
 
 simple induction ech; clear ech.
 (* Case [ech=vide] *)
-case (Z_eq_dec acrt r); intro.
+case (Z.eq_dec acrt r); intro.
 (* acrt = r *)
 exists vide; auto with abr eve.
 (* acrt <> r *)
@@ -897,7 +897,7 @@ rewrite prop3''; trivial.
 apply ACRA_add_sup with (ACR acrt' t' ech'); trivial.
 rewrite <- prop1'; trivial.
 apply prop1; auto with time.
-apply Zle_trans with (ACR acrt' (tk +/ tau3) ech'); trivial.
+apply Z.le_trans with (ACR acrt' (tk +/ tau3) ech'); trivial.
 apply decr_from_ACR_decr with (3 := inv3); auto with time.
 (* [t'</(tk+/tau3)] *)
 rewrite prop2''; trivial.
